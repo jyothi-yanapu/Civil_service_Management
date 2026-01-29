@@ -1,6 +1,7 @@
 package com.jyothiyanapu.csms;
 
 import java.util.Scanner;
+import java.util.List;
 
 public class CivilServantController {
     private final CivilServantService service;
@@ -82,7 +83,7 @@ public class CivilServantController {
 
     // View all civil servants
     private void viewAllCivilServants() {
-        List<CivilServant> civilServants = service.getAllCivilServants();
+        List<CivilServant> civilServants = service.getCivilServants();
         if (civilServants.isEmpty()) {
             System.out.println("No civil servants found.");
         } else {
@@ -98,7 +99,7 @@ public class CivilServantController {
         System.out.print("Enter ID to search: ");
         int id = Integer.parseInt(scanner.nextLine());
 
-        CivilServant cs = service.getById(id);
+        CivilServant cs = service.getCivilServantById(id);
         if (cs != null) {
             System.out.println("Civil Servant found: " + cs);
         } else {
