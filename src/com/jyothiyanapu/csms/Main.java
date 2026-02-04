@@ -1,5 +1,7 @@
 package com.jyothiyanapu.csms;
 
+import com.jyothiyanapu.csms.util.SqlGenerator;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -16,7 +18,7 @@ public class Main {
 //        service.addCivilServant(cs3);
 //
 //        System.out.println("All Civil Servants:");
-//        for (CivilServant cs : service.getCivilServants()) {
+//        for (CivilServant cs : s` ervice.getCivilServants()) {
 //            System.out.println(cs);
 //        }
 //
@@ -34,9 +36,10 @@ public class Main {
 //
 
 
-        CivilServantController controller = new CivilServantController();
+//        CivilServantController controller = new CivilServantController();
+        SqlGenerator.generateCreateTableSQL(CivilServant.class);
 
         // Start the console menu
-        controller.start();
+//        controller.start();
     }
 }

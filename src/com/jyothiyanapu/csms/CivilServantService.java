@@ -9,6 +9,9 @@ public class CivilServantService {
     List<CivilServant> CivilServants = new ArrayList<>();
 
     public void addCivilServant(CivilServant cs){
+        if(CivilServants.contains(cs)){
+           System.out.println("This Id civil servant already exists" );
+        }
         CivilServants.add(cs);
     }
 

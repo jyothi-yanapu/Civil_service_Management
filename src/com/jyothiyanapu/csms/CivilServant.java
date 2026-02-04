@@ -1,12 +1,27 @@
 package com.jyothiyanapu.csms;
 // model class
-public class CivilServant {
-    private int id;
-    private String name;
-    private String department;
-    private String designation;
-    private double salary;
+import com.jyothiyanapu.csms.annotations.Column;
+import com.jyothiyanapu.csms.annotations.Entity;
+import com.jyothiyanapu.csms.annotations.Table;
 
+@Entity
+@Table(name = "civil_servant")
+public class CivilServant {
+
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "department")
+    private String department;
+
+    @Column(name = "designation")
+    private String designation;
+
+    @Column(name = "salary")
+    private double salary;
 
     // having no-arg constructor is also better
     public CivilServant() {
