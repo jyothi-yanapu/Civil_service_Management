@@ -90,7 +90,7 @@ public class CivilServantDaoImpl implements CivilServantDao {
     }
 
     @Override
-    public void deleteById(int id) {
+    public boolean deleteById(int id) {
         String sql = "DELETE FROM civil_servant WHERE id=?";
 
         try (Connection con = DBConnection.getConnection();
@@ -102,6 +102,7 @@ public class CivilServantDaoImpl implements CivilServantDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
 
     private CivilServant mapRow(ResultSet rs) throws SQLException {
