@@ -1,7 +1,7 @@
 package com.jyothiyanapu.csms;
 
 import com.jyothiyanapu.csms.dao.CivilServantDao;
-import com.jyothiyanapu.csms.dao.CivilServantDaoImpl;
+import com.jyothiyanapu.csms.dao.DaoFactory;
 import com.jyothiyanapu.csms.model.CivilServant;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class CivilServantService {
     private final CivilServantDao civilServantDao;
 
     public CivilServantService() {
-        this.civilServantDao = new CivilServantDaoImpl();
+        this.civilServantDao = DaoFactory.getCivilServantDao();
     }
 
     public void addCivilServant(CivilServant cs){
