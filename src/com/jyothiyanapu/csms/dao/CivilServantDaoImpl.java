@@ -1,8 +1,8 @@
 
 package com.jyothiyanapu.csms.dao;
 
-import com.jyothiyanapu.csms.CivilServant;
 import com.jyothiyanapu.csms.db.DBConnection;
+import com.jyothiyanapu.csms.model.CivilServant;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -97,12 +97,12 @@ public class CivilServantDaoImpl implements CivilServantDao {
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, id);
-            ps.executeUpdate();
+            int rows = ps.executeUpdate();
+            return rows > 0;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return false;
     }
 
     private CivilServant mapRow(ResultSet rs) throws SQLException {

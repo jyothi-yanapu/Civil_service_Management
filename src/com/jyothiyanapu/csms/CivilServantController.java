@@ -1,5 +1,7 @@
 package com.jyothiyanapu.csms;
 
+import com.jyothiyanapu.csms.model.CivilServant;
+
 import java.util.Scanner;
 import java.util.List;
 

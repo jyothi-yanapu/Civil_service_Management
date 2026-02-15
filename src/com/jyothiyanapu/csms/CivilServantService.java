@@ -1,49 +1,37 @@
 package com.jyothiyanapu.csms;
 
-import java.util.ArrayList;
+import com.jyothiyanapu.csms.dao.CivilServantDao;
+import com.jyothiyanapu.csms.dao.CivilServantDaoImpl;
+import com.jyothiyanapu.csms.model.CivilServant;
+
 import java.util.List;
 
-//Store civil servants in memory and Perform operations
 public class CivilServantService {
 
-    List<CivilServant> CivilServants = new ArrayList<>();
+    private final CivilServantDao civilServantDao;
+
+    public CivilServantService() {
+        this.civilServantDao = new CivilServantDaoImpl();
+    }
 
     public void addCivilServant(CivilServant cs){
-        if(CivilServants.contains(cs)){
-           System.out.println("This Id civil servant already exists" );
+        CivilServant existingCivilServant = civilServantDao.findById(cs.getId());
+        if (existingCivilServant != null) {
+            System.out.println("This ID civil servant already exists");
+            return;
         }
-        CivilServants.add(cs);
+        civilServantDao.save(cs);
     }
 
     public List<CivilServant> getCivilServants(){
-        return CivilServants;
+        return civilServantDao.findAll();
     }
 
     public CivilServant getCivilServantById(int id){
-
-//        for(int i = 0 ; i < CivilServants.size() ; i++){
-//            if(CivilServants.get(i).getId() == id){
-//                return CivilServants.get(i);
-//            }
-//        }
-//improved code for the above.
-        for(CivilServant cs : CivilServants){
-            if(cs.getId() == id) {
-                return cs;
-            }
-        }
-
-        return null;
+        return civilServantDao.findById(id);
     }
 
-
     public boolean deleteCivilServantById(int id) {
-        for (CivilServant cs : CivilServants) {
-            if (cs.getId() == id) {
-                CivilServants.remove(cs);
-                return true;
-            }
-        }
-        return false;
+        return civilServantDao.deleteById(id);
     }
 }
